@@ -1,0 +1,47 @@
+.control {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+  width: 70%;
+}
+.topicContainer {
+  width: 300px;
+  padding: 8px 16px;
+  line-height: 0;
+  border-radius: 16px;
+  background: #ffffff;
+  border: none;
+}
+
+.control2 {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.textAreaContainer {
+  /* flex-grow: 1; */
+  width: 400px;
+  padding: 8px 16px;
+  line-height: 0;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  background: #ffffff;
+}
+
+.button {
+  padding: 10px 15px;
+  /* border: none; */
+  border-radius: 16px;
+  outline: none;
+  /* background: #0d0d0d; */
+}
