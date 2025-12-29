@@ -18,8 +18,9 @@
 .container {
 
   height: 500px;
-  width: 100%;
+  width: 50%;
   background: #ffffff;
   border-radius: 16px;
   overflow-y: auto;
+  overflow-x: hidden;
 }

@@ -12,15 +12,15 @@ app.use(cors());
 const assistant = new Assistant();
 
 app.post("/api/chat", async (req, res) => {
-  const { content } = req.body;
+  const { topic, question } = req.body;
 
   // if (!content) {
   //   return res.status(400).json({ error: "Message is required" });
   // }
 
   try {
-    const reply = await assistant.chat(content);
-    res.json({ reply });
+    const reply = await assistant.chat({ topic, question });
+    res.json({reply});
   } catch (error) {
     console.error("Backend Error:", error);
     

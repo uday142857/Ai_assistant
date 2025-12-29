@@ -16,32 +16,34 @@ function App() {
    }
 
 
-   async function handleContentSend(content) {
-     addMessage({ content, role: "user" });
-      try {
-        const response = await fetch("http://localhost:1321/api/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ content }),
-        });
+   async function handleContentSend({ topic, question }) {
+    addMessage({
+      role: "user",
+      content: `Topic: ${topic}\nQuestion: ${question}`,
+    });
+     try {
+       const response = await fetch("http://localhost:1321/api/chat", {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify({ topic, question }),
+       });
 
-        const data = await response.json();
-        console.log(data.reply);
+       const data = await response.json();
+       console.log(data.reply);
 
-        addMessage({
-          role: "assistant",
-          content: data.reply,
-        });
-      } catch (error) {
-        console.log(error)
-        addMessage({
-          role: "system",
-          content: "Sorry, I couldn't process ",
-        });
-      }
-    
+       addMessage({
+         role: "assistant",
+         content: data.reply,
+       });
+     } catch (error) {
+       console.log(error);
+       addMessage({
+         role: "system",
+         content: "Sorry, I couldn't process ",
+       });
+     }
    }
 
 

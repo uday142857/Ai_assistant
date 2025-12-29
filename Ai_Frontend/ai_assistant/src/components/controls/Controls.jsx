@@ -1,35 +1,40 @@
-import React, { useState } from 'react'
-import "./Controls.css"
+import React, { useState } from "react";
+import "./Controls.css";
 
-function Controls({onSend}) {
+function Controls({ onSend }) {
+  const [topic, setTopic] = useState("");
+  const [content, setContent] = useState("");
 
-  const [content,setContent] = useState("")
+  function handleContentChange(event) {
+    setContent(event.target.value);
+  }
+  function handleTopicChange() {
+    setTopic(event.target.value);
+  }
 
-   function handleContentChange(event) {
-     setContent(event.target.value);
-   }
-
-   function handleContentSend() {
-     if (content.length > 0) {
-       onSend(content);
-       setContent("");
-     }
-   }
-
-    function handleEnterPress(event) {
-      if (event.key === "Enter" && !event.shiftKey) {
-        event.preventDefault();
-        handleContentSend();
-      }
+  function handleContentSend() {
+    if (topic.trim() && content.trim()) {
+      onSend({ topic, question: content });
+      setContent("");
     }
+  }
+
+  function handleEnterPress(event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      handleContentSend();
+    }
+  }
   return (
     <div className="control">
       <div>
         <label>Topic : </label>
         <input
           type="text"
+          value={topic}
           className="topicContainer"
           placeholder="Enter Your Topic"
+          onChange={handleTopicChange}
         />
       </div>
       <div className="control2">
@@ -51,4 +56,4 @@ function Controls({onSend}) {
   );
 }
 
-export default Controls
+export default Controls;

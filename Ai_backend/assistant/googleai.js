@@ -12,9 +12,23 @@ const googleai = new GoogleGenAI({
      this.#chat = googleai.chats.create({ model });
    }
 
-   async chat(content) {
+   async chat({topic, question}) {
+    const safeTopic = String(topic);
+    const safeQuestion = String(question);
+     const prompt = `
+You are a teaching assistant.
+
+Topic: ${safeTopic}
+Student Question: ${safeQuestion}
+
+Respond ONLY:
+  aiExplanation
+  aiExample,
+  aiPracticeQuestion
+
+`;
      const result = await this.#chat.sendMessage({
-       message: content,
+       message: prompt,
      });
      return result.text;
    }
