@@ -16,6 +16,7 @@ function Controls({ onSend }) {
     if (topic.trim() && content.trim()) {
       onSend({ topic, question: content });
       setContent("");
+      setTopic("")
     }
   }
 
