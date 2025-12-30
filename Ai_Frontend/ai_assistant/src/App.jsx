@@ -22,7 +22,7 @@ function App() {
       content: `Topic: ${topic}\nQuestion: ${question}`,
     });
      try {
-       const response = await fetch("http://localhost:1321/api/chat", {
+       const response = await fetch("https://ai-assistant-back-o8yh.onrender.com", {
          method: "POST",
          headers: {
            "Content-Type": "application/json",
